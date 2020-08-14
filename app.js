@@ -146,9 +146,15 @@ app.get("/:customListName", (req, res) => {
           items: defaultItems
         });
 
-        list.save();
+        list.save(err => {
+          if (!err) {
+            res.redirect('/' + customListName);
+          } else {
+            console.log(err);
+          }
+        });
 
-        res.redirect('/' + customListName);
+
       } else {
         //Show an existing list
         res.render('list', {
