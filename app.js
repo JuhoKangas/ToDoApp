@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const _ = require('lodash');
 
+require('dotenv').config();
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -14,7 +16,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect('mongodb+srv://AdminUser1:OIFK6kKYZo0h8YH1@mycluster.jbkld.mongodb.net/todoListDB?retryWrites=true&w=majority', {
+
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@mycluster.jbkld.mongodb.net/todoListDB?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
