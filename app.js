@@ -14,11 +14,14 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect('mongodb://localhost:27017/todolistDB', {
+mongoose.connect('mongodb+srv://AdminUser1:OIFK6kKYZo0h8YH1@mycluster.jbkld.mongodb.net/todoListDB?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
 });
+
+
+
 
 const Schema = mongoose.Schema;
 
